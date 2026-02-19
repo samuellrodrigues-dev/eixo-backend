@@ -152,6 +152,7 @@ app.get('/dashboard/:userId', async (req, res) => {
       title: g.title,
       target: g.targetValue,
       current: g.currentValue
+      imageUrl: g.imageUrl
     }));
 
     // NOVA LÓGICA: Organiza as transações da mais recente para a mais antiga
@@ -175,6 +176,9 @@ app.get('/dashboard/:userId', async (req, res) => {
   }
 });
 
-app.listen(3333, () => {
-  console.log('🚀 Server Eixo rodando na porta 3333');
+// A nuvem vai injetar a porta dela aqui, ou usar a 3333 se estiver no seu Mac
+const PORT = process.env.PORT || 3333;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor Eixo rodando na porta ${PORT}`);
 });
