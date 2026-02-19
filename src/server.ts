@@ -106,7 +106,7 @@ app.post('/goals', async (req, res) => {
       data: { 
         title, 
         targetValue: parseFloat(targetValue), 
-        imageUrl, // Guarda a imagem na base de dados
+        imageUrl,
         userId 
       }
     });
@@ -115,6 +115,13 @@ app.post('/goals', async (req, res) => {
     console.error(error);
     return res.status(500).json({ error: "Erro ao guardar meta" });
   }
+}); // <-- MUITA ATENÇÃO AQUI: Garanta que esta linha com }); existe!
+
+// A nuvem vai injetar a porta dela aqui, ou usar a 3333 se estiver no seu Mac
+const PORT = process.env.PORT || 3333;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor Eixo rodando na porta ${PORT}`);
 });
 
 // ==========================================
